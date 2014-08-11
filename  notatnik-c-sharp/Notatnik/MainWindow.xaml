@@ -1,0 +1,33 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Name="Notes" x:Class="Notatnik.MainWindow"
+        Title="Notes" Height="600" Width="800" ToolTip="Notatnik" HorizontalAlignment="Center" VerticalAlignment="Center" KeyDown="Notes_KeyDown" MinWidth="35" MinHeight="120" Closing="Notes_Closing">
+    <Window.OpacityMask>
+        <SolidColorBrush Color="Black"/>
+    </Window.OpacityMask>
+    <Grid MinWidth="35" MinHeight="35">
+        <Grid.OpacityMask>
+            <SolidColorBrush Color="Black"/>
+        </Grid.OpacityMask>
+        <Menu x:Name="MenuGłówne" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.ColumnSpan="1" Background="{x:Null}">
+            <MenuItem x:Name="Plik" Header="Plik" Click="MenuItem_Click" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,5,0,0">
+                <MenuItem x:Name="Otwórz___" Header="Otwórz..." HorizontalAlignment="Left" Click="Otwórz____Click" InputGestureText="Ctrl+O"/>
+                <MenuItem x:Name="Otwórz_ostatnio_używane___" Header="Otwórz ostatnio używane..." HorizontalAlignment="Left">
+                    <MenuItem Header="MenuItem" HorizontalAlignment="Left" Width="140" Click="MenuItem_Click_1"/>
+                    <MenuItem Header="MenuItem" HorizontalAlignment="Left" Width="140" Click="MenuItem_Click_2"/>
+                    <MenuItem Header="MenuItem" HorizontalAlignment="Left" Width="140"/>
+                    <MenuItem Header="MenuItem" HorizontalAlignment="Left" Width="140"/>
+                    <MenuItem Header="MenuItem" HorizontalAlignment="Left" Width="140"/>
+                </MenuItem>
+                <MenuItem x:Name="Zamknij" Header="Zamknij" HorizontalAlignment="Left" InputGestureText="Ctrl+Q" Click="Zamknij_Click"/>
+                <Separator HorizontalAlignment="Left" Height="2" Margin="0,0,-3,0" Width="230" Background="#FFD7D7D7"/>
+                <MenuItem x:Name="Wyjdź_z_programu" Header="Wyjdź z programu" HorizontalAlignment="Left" Click="Wyjdź_z_programu_Click"/>
+            </MenuItem>
+            <MenuItem Header="Komendy" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,5,0,0">
+                <MenuItem x:Name="Formatuj" Header="Formatuj" HorizontalAlignment="Left" Width="140" Click="Formatuj_Click"/>
+            </MenuItem>
+        </Menu>
+        <TextBox x:Name="MainTextBox" TextWrapping="Wrap" Margin="10,28,10,10" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True" MinWidth="50" MinHeight="50" IsEnabled="False" KeyDown="MainTextBox_KeyDown"/>
+    </Grid>
+</Window>
