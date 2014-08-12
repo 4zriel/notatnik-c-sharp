@@ -35,8 +35,8 @@ namespace Notatnik
             Notes.Title = titleName;
             opened = false;
             edited = false;
-            this.Opacity = 1;
         }
+
         public void ReadFile(string filePath)
         {
             StreamReader FileReader = new StreamReader(filePath);
@@ -44,6 +44,7 @@ namespace Notatnik
             MainTextBox.Text = tmpText;
             FileReader.Close();
         }
+
         public void SaveFile(string filePath)
         {
             string tmpText = MainTextBox.Text;
@@ -73,7 +74,7 @@ namespace Notatnik
                     MainTextBox.AcceptsReturn = true;
                     MainTextBox.AcceptsTab = true;
                     Notes.Title = titleName + ": " + path;
-                    MainTextBox.Opacity = 75;
+					edited = false;
                 }
             }
             catch
@@ -81,7 +82,7 @@ namespace Notatnik
                 MessageBoxResult result = MessageBox.Show("Błąd otwarcia pliku!", "Error!", MessageBoxButton.OK, MessageBoxImage.Stop);
             }
         }
-        public void Saver()
+        public bool Saver()
         {
             try
             {
@@ -90,21 +91,26 @@ namespace Notatnik
                 saveDial.FileName = "";
                 saveDial.Filter = "Text files|*.txt|XML files|*.xml";
                 bool? Dial = saveDial.ShowDialog();
-                if (Dial.HasValue && Dial.Value)
-                {
-                    this.path = saveDial.FileName;
-                    this.SaveFile(this.path);
-                    Reseter();
-                }
+				if (Dial.HasValue && Dial.Value)
+				{
+					this.path = saveDial.FileName;
+					this.SaveFile(this.path);
+					Reseter();
+					return true;
+				}
+				else
+					return false;
             }
             catch
             {
                 MessageBoxResult result = MessageBox.Show("Błąd zapisu!", "Error!", MessageBoxButton.OK, MessageBoxImage.Stop);
+				return false;
             }
         }
 
         public MainWindow()
         {
+			this.AllowsTransparency = true;
             InitializeComponent();
             this.opened = false;
         }
@@ -123,19 +129,8 @@ namespace Notatnik
         {
             if (edited)
             {
-                MessageBoxResult result = MessageBox.Show("Zapisać zmiany?", "Notes", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
-                switch (result)
-                {
-                    case MessageBoxResult.Yes:
-                        this.Saver();
-                        this.Close();
-                        break;
-                    case MessageBoxResult.No:
-                        this.Close();
-                        break;
-                    case MessageBoxResult.Cancel:
-                        break;
-                }
+				if (AskBeforeClose())
+					this.Close();
             }
             else
                 this.Close();                
@@ -145,8 +140,7 @@ namespace Notatnik
         {
             if (!opened)
             {
-                this.Opener();
-                Notes.Opacity = 0.75;                
+                this.Opener();              
             }
             else
             {
@@ -160,19 +154,8 @@ namespace Notatnik
             {
                 if (edited && opened)
                 {
-                    MessageBoxResult result = MessageBox.Show("Zapisać zmiany?", "Notes", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
-                    switch (result)
-                    {
-                        case MessageBoxResult.Yes:
-                            this.Saver();
-                            this.Close();
-                            break;
-                        case MessageBoxResult.No:
-                            this.Close();
-                            break;
-                        case MessageBoxResult.Cancel:
-                            break;
-                    }
+					if (AskBeforeClose())
+						this.Close();
                 }
                 else
                     this.Close();
@@ -188,22 +171,32 @@ namespace Notatnik
             }
         }
 
+		/// <summary>
+		/// Ask before close
+		/// </summary>
+		/// <returns>If someone cancel ask window - return false</returns>
+		private bool AskBeforeClose()
+		{
+			MessageBoxResult result = MessageBox.Show("Zapisać zmiany?", "Notes", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
+			bool cancel = false;
+			if (result == MessageBoxResult.Yes)
+			{
+				if (!this.Saver())
+					cancel = true;
+			}
+			else
+				if (result == MessageBoxResult.Cancel)
+					cancel = true;
+			edited = cancel;
+			return !cancel;
+		}
+
         private void Zamknij_Click(object sender, RoutedEventArgs e)
         {
             if (edited && opened)
             {
-                MessageBoxResult result = MessageBox.Show("Zapisać zmiany?", "Notes", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
-                switch (result)
-                {
-                    case MessageBoxResult.Yes:
-                        this.Saver();
-                        break;
-                    case MessageBoxResult.No:
-                        Reseter();
-                        break;
-                    case MessageBoxResult.Cancel:
-                        break;
-                }
+				if (AskBeforeClose())
+					Reseter();
             }
             else if (!edited && opened)
                 Reseter();
@@ -213,7 +206,6 @@ namespace Notatnik
 
         private void MainTextBox_KeyDown(object sender, KeyEventArgs e)
         {
-            edited = true;
         }
 
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)
@@ -229,20 +221,7 @@ namespace Notatnik
         private void Notes_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             if (edited && opened)
-            {
-                MessageBoxResult result = MessageBox.Show("Zapisać zmiany?", "Notes", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
-                switch (result)
-                {
-                    case MessageBoxResult.Yes:
-                        this.Saver();
-                        break;
-                    case MessageBoxResult.No:
-                        break;
-                    case MessageBoxResult.Cancel:
-                        e.Cancel = true;
-                        break;
-                }
-            }
+               e.Cancel = !AskBeforeClose();
         }
         private void Formatuj_Click(object sender, RoutedEventArgs e)
         {
@@ -252,6 +231,11 @@ namespace Notatnik
                 edited = true;
             }
         }
+
+		private void MainTextBox_TextChanged(object sender, TextChangedEventArgs e)
+		{
+			edited = true;
+		}
 
     }
 }
