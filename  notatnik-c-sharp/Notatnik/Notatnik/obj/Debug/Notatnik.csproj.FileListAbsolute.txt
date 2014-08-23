@@ -1,0 +1,13 @@
+C:\Users\Rafał\Documents\Visual Studio 2013\Projects\Notatnik\Notatnik\bin\Debug\Notatnik.exe.config
+C:\Users\Rafał\Documents\Visual Studio 2013\Projects\Notatnik\Notatnik\bin\Debug\Notatnik.exe
+C:\Users\Rafał\Documents\Visual Studio 2013\Projects\Notatnik\Notatnik\bin\Debug\Notatnik.pdb
+C:\Users\Rafał\Documents\Visual Studio 2013\Projects\Notatnik\Notatnik\obj\Debug\Notatnik.csprojResolveAssemblyReference.cache
+C:\Users\Rafał\Documents\Visual Studio 2013\Projects\Notatnik\Notatnik\obj\Debug\MainWindow.baml
+C:\Users\Rafał\Documents\Visual Studio 2013\Projects\Notatnik\Notatnik\obj\Debug\MainWindow.g.cs
+C:\Users\Rafał\Documents\Visual Studio 2013\Projects\Notatnik\Notatnik\obj\Debug\App.g.cs
+C:\Users\Rafał\Documents\Visual Studio 2013\Projects\Notatnik\Notatnik\obj\Debug\Notatnik_MarkupCompile.cache
+C:\Users\Rafał\Documents\Visual Studio 2013\Projects\Notatnik\Notatnik\obj\Debug\Notatnik.g.resources
+C:\Users\Rafał\Documents\Visual Studio 2013\Projects\Notatnik\Notatnik\obj\Debug\Notatnik.Properties.Resources.resources
+C:\Users\Rafał\Documents\Visual Studio 2013\Projects\Notatnik\Notatnik\obj\Debug\Notatnik.csproj.GenerateResource.Cache
+C:\Users\Rafał\Documents\Visual Studio 2013\Projects\Notatnik\Notatnik\obj\Debug\Notatnik.exe
+C:\Users\Rafał\Documents\Visual Studio 2013\Projects\Notatnik\Notatnik\obj\Debug\Notatnik.pdb

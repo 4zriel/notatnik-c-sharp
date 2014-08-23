@@ -15,35 +15,27 @@
 	KeyDown="Notes_KeyDown"
 	MinWidth="35"
 	MinHeight="120"
-	Opacity="0.85"
-	WindowStyle="None"
 	Background="Transparent"
-	Closing="Notes_Closing">
-    <!--<Window.OpacityMask>
-        <SolidColorBrush Color="Black"/>
-    </Window.OpacityMask>-->
-	<Grid MinWidth="35" MinHeight="35" Background="Transparent">
-        <!--<Grid.OpacityMask>
-            <SolidColorBrush Color="Black"/>
-        </Grid.OpacityMask>-->
-        <Menu x:Name="MenuGłówne" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.ColumnSpan="1" Background="LightGray">
-            <MenuItem x:Name="Plik" Header="Plik" Click="MenuItem_Click" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,5,0,0">
-                <MenuItem x:Name="Otwórz___" Header="Otwórz..." HorizontalAlignment="Left" Click="Otwórz____Click" InputGestureText="Ctrl+O"/>
-                <MenuItem x:Name="Otwórz_ostatnio_używane___" Header="Otwórz ostatnio używane..." HorizontalAlignment="Left">
-                    <MenuItem Header="MenuItem" HorizontalAlignment="Left" Width="140" Click="MenuItem_Click_1"/>
-                    <MenuItem Header="MenuItem" HorizontalAlignment="Left" Width="140" Click="MenuItem_Click_2"/>
-                    <MenuItem Header="MenuItem" HorizontalAlignment="Left" Width="140"/>
-                    <MenuItem Header="MenuItem" HorizontalAlignment="Left" Width="140"/>
-                    <MenuItem Header="MenuItem" HorizontalAlignment="Left" Width="140"/>
-                </MenuItem>
+	Closing="Notes_Closing" WindowStyle="None">
+	<!--<Window.OpacityMask>
+		<SolidColorBrush Color="Black"/>
+	</Window.OpacityMask>-->
+	<Grid MinWidth="35" MinHeight="35" Background="White">
+		<!--<Grid.OpacityMask>
+			<SolidColorBrush Color="Black"/>
+		</Grid.OpacityMask>-->
+		<Menu x:Name="MenuGłówne" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.ColumnSpan="1" Background="#FFE4E4E4" Width="792">
+			<MenuItem x:Name="Plik" Header="Plik" Click="MenuItem_Click" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,5,0,0">
+				<MenuItem x:Name="Otwórz___" Header="Otwórz..." HorizontalAlignment="Left" Click="Otwórz____Click" InputGestureText="Ctrl+O"/>
+				<MenuItem x:Name="LastOpened" Header="Otwórz ostatnio używane..." HorizontalAlignment="Left"/>
                 <MenuItem x:Name="Zamknij" Header="Zamknij" HorizontalAlignment="Left" InputGestureText="Ctrl+Q" Click="Zamknij_Click"/>
-                <Separator HorizontalAlignment="Left" Height="2" Margin="0,0,-3,0" Width="230" Background="#FFD7D7D7"/>
-                <MenuItem x:Name="Wyjdź_z_programu" Header="Wyjdź z programu" HorizontalAlignment="Left" Click="Wyjdź_z_programu_Click"/>
-            </MenuItem>
-            <MenuItem Header="Komendy" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,5,0,0">
-                <MenuItem x:Name="Formatuj" Header="Formatuj" HorizontalAlignment="Left" Width="140" Click="Formatuj_Click"/>
-            </MenuItem>
-        </Menu>
-        <TextBox x:Name="MainTextBox" TextWrapping="Wrap" Margin="10,28,10,10" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True" MinWidth="50" MinHeight="50" IsEnabled="False" KeyDown="MainTextBox_KeyDown" TextChanged="MainTextBox_TextChanged"/>
-    </Grid>
+				<Separator HorizontalAlignment="Left" Height="2" Margin="0,0,-3,0" Width="230" Background="#FFD7D7D7"/>
+				<MenuItem x:Name="Wyjdź_z_programu" Header="Wyjdź z programu" HorizontalAlignment="Left" Click="Wyjdź_z_programu_Click"/>
+			</MenuItem>
+			<MenuItem Header="Komendy" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,5,0,0">
+				<MenuItem x:Name="Formatuj" Header="Formatuj" HorizontalAlignment="Left" Width="140" Click="Formatuj_Click"/>
+			</MenuItem>
+		</Menu>
+		<TextBox x:Name="MainTextBox" TextWrapping="Wrap" Margin="10,28,10,10" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True" MinWidth="50" MinHeight="50" IsEnabled="False" KeyDown="MainTextBox_KeyDown" TextChanged="MainTextBox_TextChanged" BorderBrush="{x:Null}"/>
+	</Grid>
 </Window>
