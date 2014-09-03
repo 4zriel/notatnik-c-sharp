@@ -28,7 +28,7 @@ namespace Notatnik
 		private bool opened;
 		private string titleName = "Notes";
 		private List<string> recentFiles = new List<string>();
-		private static RegistryKey tmpKey = Registry.LocalMachine.OpenSubKey("Software", true);
+		private static RegistryKey tmpKey = Registry.LocalMachine.OpenSubKey("Software", RegistryKeyPermissionCheck.ReadWriteSubTree, System.Security.AccessControl.RegistryRights.FullControl);
 		private RegistryKey registryRecentFile = tmpKey.CreateSubKey("Notatnik_C_Sharp");
 
 		public MainWindow()
